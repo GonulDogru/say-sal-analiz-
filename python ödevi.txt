@@ -1,0 +1,21 @@
+import math
+
+def cos_taylor(x, n):
+    result = 0
+    for i in range(n):
+        term = ((-1) ** i) * (x ** (2 * i)) / math.factorial(2 * i)
+        result += term
+    return result
+
+x = math.pi / 5
+
+# İki terimli kesme hatası
+approximation_2_terms = cos_taylor(x, 2)
+error_2_terms = abs(math.cos(x) - approximation_2_terms)
+
+# Tek terimli kesme hatası
+approximation_1_term = cos_taylor(x, 1)
+error_1_term = abs(math.cos(x) - approximation_1_term)
+
+print("İki terimli kesme hatası:", error_2_terms)
+print("Tek terimli kesme hatası:", error_1_term)
